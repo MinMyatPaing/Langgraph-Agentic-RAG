@@ -28,4 +28,8 @@ doc_splits = text_splitter.split_documents(doc_list)
 #     persist_directory="./.chroma",
 # )
 
-retriever = vectorStore.as_retriever()
+retriever = Chroma(
+    collection_name="rag-chroma",
+    persist_directory="./.chroma",
+    embedding_function=OpenAIEmbeddings(),
+).as_retriever()
